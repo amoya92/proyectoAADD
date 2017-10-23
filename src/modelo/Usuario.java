@@ -1,8 +1,13 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.*;
+
+import modelo.Alineacion;
+import modelo.Partido;
 
 @Entity
 public class Usuario implements Serializable {
@@ -21,6 +26,31 @@ public class Usuario implements Serializable {
 	private String imagen;
 	
 	private boolean admin;
+	
+	@ManyToMany
+	@JoinTable(name="usuario2alineacion",
+		joinColumns = @JoinColumn(name="id_usuario"),
+		inverseJoinColumns = @JoinColumn(name="id_alineacion"))
+	private List<Alineacion> alineaciones;
+	
+	@ManyToMany
+	@JoinTable(name="usuario2partido",
+			joinColumns = @JoinColumn(name="id_usuario"),
+			inverseJoinColumns = @JoinColumn(name="id_partido"))
+	private List<Partido> partidos;
+	
+	@ManyToMany
+	@JoinTable(name="usuario2temporada",
+			joinColumns = @JoinColumn(name="id_usuario"),
+			inverseJoinColumns = @JoinColumn(name="id_temporada"))
+	private List<Temporada> temporadas;
+	
+	public Usuario(){
+		this.admin = false;
+		this.alineaciones = new LinkedList<Alineacion>();
+		this.partidos = new LinkedList<Partido>();
+		this.temporadas = new LinkedList<Temporada>();
+	}
 
 	public String getUsuario() {
 		return usuario;
@@ -73,6 +103,31 @@ public class Usuario implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public List<Alineacion> getAlineaciones() {
+		return alineaciones;
+	}
+
+	public void setAlineaciones(List<Alineacion> alineaciones) {
+		this.alineaciones = alineaciones;
+	}
+
+	public List<Partido> getPartidos() {
+		return partidos;
+	}
+
+	public void setPartidos(List<Partido> partidos) {
+		this.partidos = partidos;
+	}
+
+	public List<Temporada> getTemporadas() {
+		return temporadas;
+	}
+
+	public void setTemporadas(List<Temporada> temporadas) {
+		this.temporadas = temporadas;
+	}
+	
 	
 	
 	

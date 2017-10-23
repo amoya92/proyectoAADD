@@ -1,6 +1,8 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,6 +18,17 @@ public class Temporada implements Serializable {
 	private String lugar;
 	
 	private int minimo;
+	
+	@ManyToMany(mappedBy="temporadas")
+	private List<Usuario> usuarios;
+	
+	@OneToMany(mappedBy="temporada")
+	private List<Partido> partidos;
+	
+	public Temporada(){
+		this.usuarios = new LinkedList<Usuario>();
+		this.partidos = new LinkedList<Partido>();
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -44,6 +57,23 @@ public class Temporada implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public List<Partido> getPartidos() {
+		return partidos;
+	}
+
+	public void setPartidos(List<Partido> partidos) {
+		this.partidos = partidos;
+	}
+	
 	
 	
 	
