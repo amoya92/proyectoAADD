@@ -158,4 +158,14 @@ public class Controlador {
 		}
 		return null;
 	}
+	
+	public List<Partido> obtenerPartidoTemporada(String temporada){
+		PartidoDAO parDAO = DAOFactoria.getUnicaInstancia().getPartidoDAO();
+		try {
+			return parDAO.findPartidoByTemporada(temporada);
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

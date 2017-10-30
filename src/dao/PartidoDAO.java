@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import modelo.Partido;
+import modelo.Temporada;
 import modelo.Usuario;
 
 public interface PartidoDAO {
@@ -16,6 +17,8 @@ public interface PartidoDAO {
 	Partido createPartido(Date fecha) throws DAOException;
 
 	Partido addUsuarioPartido(Long id, Usuario usuario) throws DAOException;
+
+	List<Partido> findPartidoByTemporada(String temporada) throws DAOException;
 	
 	
 }

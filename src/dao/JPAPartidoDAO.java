@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import modelo.Partido;
+import modelo.Temporada;
 import modelo.Usuario;
 
 public class JPAPartidoDAO implements PartidoDAO {
@@ -40,6 +41,8 @@ public class JPAPartidoDAO implements PartidoDAO {
 		query.setParameter("f2", f2);
 		return query.getResultList();
 	}
+	
+	
 
 	@Override
 	public List<Partido> findPartidoByFechaCRIT(Date f1, Date f2) throws DAOException {
@@ -101,6 +104,21 @@ public class JPAPartidoDAO implements PartidoDAO {
 		
 		return par;
 		
+	}
+
+	@Override
+	public List<Partido> findPartidoByTemporada(String temporada) throws DAOException {
+		EntityManager em = null;
+
+		synchronized (emf) {
+			em = emf.createEntityManager();
+		}
+		
+		String jpql = "SELECT p.* FROM Partido p JOIN p.temporada t WHERE t.nombre LIKE :temporada";
+		Query query = em.createQuery(jpql);
+		query.setParameter("temporada", temporada);
+		
+		return query.getResultList();
 	}
 
 }
