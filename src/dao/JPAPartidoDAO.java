@@ -23,6 +23,8 @@ public class JPAPartidoDAO implements PartidoDAO {
 		this.emf = emf;
 	}
 
+	
+	
 	@Override
 	public List<Partido> findPartidoByFecha(Date f1, Date f2) throws DAOException {
 
@@ -62,19 +64,24 @@ public class JPAPartidoDAO implements PartidoDAO {
 	}
 
 	@Override
-	public Partido createPartido(Date fecha) {
+	public Partido createPartido(Date fecha, String temporada) {
 		EntityManager em = null;
 
 		synchronized (emf) {
 			em = emf.createEntityManager();
 		}
 		
+		Temporada tem = em.find(Temporada.class, temporada);
+		
 		Partido par = new Partido();
+		par.setTemporada(tem);
 		par.setFecha(fecha);
+		
+		tem.getPartidos().add(par);
 		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		
+		em.persist(tem);
 		em.persist(par);
 		tx.commit();
 		em.close();
@@ -83,7 +90,7 @@ public class JPAPartidoDAO implements PartidoDAO {
 	}
 
 	@Override
-	public Partido addUsuarioPartido(Long id, Usuario usuario) throws DAOException {
+	public Partido addUsuarioPartido(Long id, String usuario) throws DAOException {
 		EntityManager em = null;
 
 		synchronized (emf) {
@@ -91,13 +98,15 @@ public class JPAPartidoDAO implements PartidoDAO {
 		}
 		
 		Partido par = em.find(Partido.class, id);
-		par.getAsistentes().add(usuario);
-		usuario.getPartidos().add(par);
+		Usuario usu = em.find(Usuario.class, usuario);
+		
+		par.getAsistentes().add(usu);
+		usu.getPartidos().add(par);
 		
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		
-		em.persist(usuario);
+		em.persist(usu);
 		em.persist(par);
 		tx.commit();
 		em.close();
@@ -119,6 +128,23 @@ public class JPAPartidoDAO implements PartidoDAO {
 		query.setParameter("temporada", temporada);
 		
 		return query.getResultList();
+	}
+
+
+
+	@Override
+	public Partido findPartido(Long partido) throws DAOException {
+		EntityManager em = null;
+
+		synchronized (emf) {
+			em = emf.createEntityManager();
+		}
+		
+		Partido part = em.find(Partido.class, partido);
+
+		em.close();
+
+		return part;
 	}
 
 }

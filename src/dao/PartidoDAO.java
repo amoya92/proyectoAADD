@@ -14,11 +14,13 @@ public interface PartidoDAO {
 
 	List<Partido> findPartidoByFechaCRIT(Date f1, Date f2) throws DAOException;
 
-	Partido createPartido(Date fecha) throws DAOException;
+	Partido createPartido(Date fecha, String temporada) throws DAOException;
 
-	Partido addUsuarioPartido(Long id, Usuario usuario) throws DAOException;
+	Partido addUsuarioPartido(Long id, String usuario) throws DAOException;
 
 	List<Partido> findPartidoByTemporada(String temporada) throws DAOException;
+
+	Partido findPartido(Long partido) throws DAOException;
 	
 	
 }

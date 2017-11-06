@@ -11,8 +11,8 @@ public interface TemporadaDAO {
 	
 	public Temporada findTemporada(String nombre) throws DAOException;
 
-	public Temporada addUsuarioTemporada(String temporada, Usuario usuario) throws DAOException;
+	public Temporada addUsuarioTemporada(String temporada, String usuario) throws DAOException;
 
-	public Temporada deleteUsuarioTemporada(String temporada, Usuario usuario) throws DAOException;
+	public Temporada deleteUsuarioTemporada(String temporada, String usuario) throws DAOException;
 
 }

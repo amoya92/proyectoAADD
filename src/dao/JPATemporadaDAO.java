@@ -57,7 +57,7 @@ public class JPATemporadaDAO implements TemporadaDAO {
 	}
 
 	@Override
-	public Temporada addUsuarioTemporada(String temporada, Usuario usuario) {
+	public Temporada addUsuarioTemporada(String temporada, String usuario) {
 		EntityManager em = null;
 
 		synchronized (emf) {
@@ -65,15 +65,17 @@ public class JPATemporadaDAO implements TemporadaDAO {
 		}
 
 		Temporada temp = em.find(Temporada.class, temporada);
-		temp.getUsuarios().add(usuario);
-		usuario.getTemporadas().add(temp);
+		Usuario usu = em.find(Usuario.class, usuario);
+		
+		temp.getUsuarios().add(usu);
+		usu.getTemporadas().add(temp);
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		
 		
 		em.persist(temp);
-		em.persist(usuario);
+		em.persist(usu);
 		
 		tx.commit();
 		em.close();
@@ -83,7 +85,7 @@ public class JPATemporadaDAO implements TemporadaDAO {
 	}
 
 	@Override
-	public Temporada deleteUsuarioTemporada(String temporada, Usuario usuario) throws DAOException {
+	public Temporada deleteUsuarioTemporada(String temporada, String usuario) throws DAOException {
 		EntityManager em = null;
 
 		synchronized (emf) {
@@ -91,14 +93,16 @@ public class JPATemporadaDAO implements TemporadaDAO {
 		}
 
 		Temporada temp = em.find(Temporada.class, temporada);
-		temp.getUsuarios().remove(usuario);
-		usuario.getTemporadas().remove(temp);
+		Usuario usu = em.find(Usuario.class, usuario);
+		
+		temp.getUsuarios().remove(usu);
+		usu.getTemporadas().remove(temp);
 
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		
 		em.persist(temp);
-		em.persist(usuario);
+		em.persist(usu);
 		
 		tx.commit();
 		em.close();

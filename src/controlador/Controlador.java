@@ -82,10 +82,9 @@ public class Controlador {
 	}
 	
 	public Temporada anadirUsuarioTemporada(String temporada, String usuario){
-		Usuario usu = obtenerUsuario(usuario);
 		TemporadaDAO tempDAO = DAOFactoria.getUnicaInstancia().getTemporadaDAO();
 		try {
-			return tempDAO.addUsuarioTemporada(temporada, usu);
+			return tempDAO.addUsuarioTemporada(temporada, usuario);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -94,10 +93,9 @@ public class Controlador {
 	}
 	
 	public Temporada quitarUsuarioTemporada(String temporada, String usuario){
-		Usuario usu = obtenerUsuario(usuario);
 		TemporadaDAO tempDAO = DAOFactoria.getUnicaInstancia().getTemporadaDAO();
 		try {
-			return tempDAO.deleteUsuarioTemporada(temporada, usu);
+			return tempDAO.deleteUsuarioTemporada(temporada, usuario);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -115,11 +113,20 @@ public class Controlador {
 		return null;
 	}
 	
-	public Partido registrarPartido(Date fecha){
+	public Partido obtenerPartido(Long partido){
+		try{
+			PartidoDAO partDao = DAOFactoria.getUnicaInstancia().getPartidoDAO();
+			return partDao.findPartido(partido);
+		} catch(DAOException e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Partido registrarPartido(Date fecha, String temporada){
 		PartidoDAO parDAO = DAOFactoria.getUnicaInstancia().getPartidoDAO();
-		
 		try {
-			return parDAO.createPartido(fecha);
+			return parDAO.createPartido(fecha, temporada);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
@@ -127,24 +134,34 @@ public class Controlador {
 	}
 	
 	public Partido confirmarAsistencia(Long id, String usuario){
-		Usuario usu = obtenerUsuario(usuario);
 		PartidoDAO parDAO = DAOFactoria.getUnicaInstancia().getPartidoDAO();
 		try {
-			return parDAO.addUsuarioPartido(id, usu);
+			return parDAO.addUsuarioPartido(id, usuario);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	public Alineacion registrarAlineacion(String nombre, Color color, int tanteo){
+	public Alineacion registrarAlineacion(Long idPartido, String nombre, Color color, int tanteo){
 		AlineacionDAO aliDAO = DAOFactoria.getUnicaInstancia().getAlineacionDAO();
 		try {
-			return aliDAO.createAlineacion(nombre, color, tanteo);
+			return aliDAO.createAlineacion(nombre, color, tanteo, idPartido);
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
 		
+		return null;
+	}
+	
+	public Alineacion registrarUsuariosAlineacion(String usuario, String alineacion){
+		AlineacionDAO aliDAO = DAOFactoria.getUnicaInstancia().getAlineacionDAO();
+		try {
+			return aliDAO.addUsuario(alineacion, usuario);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 	
