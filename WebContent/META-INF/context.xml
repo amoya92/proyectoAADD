@@ -17,9 +17,9 @@
 --><!-- The contents of this file will be loaded for each web application -->
 <Context>
 
-	<Resource name="jdbc/eventosDeportivos" auth="Container" type="javax.sql.DataSource" 
+	<Resource name="jdbc/eventosdeportivos" auth="Container" type="javax.sql.DataSource" 
 	driverClassName="com.mysql.jdbc.Driver"
 	username="root" password=""
-	url="jdbc:mysql://localhost:3306/eventosDeportivos" />
+	url="jdbc:mysql://localhost:3306/eventosdeportivos" />
 	 
 </Context>

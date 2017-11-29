@@ -77,7 +77,10 @@ public class Controlador {
 		UsuarioDAO usuDAO = DAOFactoria.getUnicaInstancia().getUsuarioDAO();
 		try{
 			return usuDAO.findAllUsuarios();
-		}catch(DAOException e);
+		}catch(DAOException e){
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public Temporada registroTemporada(String nombre, String lugar, int minimo){

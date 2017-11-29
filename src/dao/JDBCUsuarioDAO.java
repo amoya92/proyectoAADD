@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -74,6 +75,12 @@ public class JDBCUsuarioDAO implements UsuarioDAO {
 
 	@Override
 	public Usuario updateUsuario(String usuario, String clave, String mail, String movil) throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Usuario> findAllUsuarios() throws DAOException {
 		// TODO Auto-generated method stub
 		return null;
 	}

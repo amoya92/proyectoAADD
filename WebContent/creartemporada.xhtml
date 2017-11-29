@@ -10,19 +10,40 @@
 <ui:composition template="/WEB-INF/templates/gestor.xhtml">
 	<ui:define name="titulo">Crea temporada</ui:define>
 	<ui:define name="contenido">
-		<div class="form-group">
-			<h:outputText value="Nombre"></h:outputText>
-			<p:inputText class="form-control" id="nombre" value="#{beanTemporada.nombre}"/>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<h:outputText value="Nombre"></h:outputText>
+					<p:inputText class="form-control" id="nombre"
+						value="#{beanTemporada.nombre}" />
+					<h:message for="nombre" style="color:red" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Lugar"></h:outputText>
+					<p:inputText class="form-control" id="lugar"
+						value="#{beanTemporada.lugar}" />
+				</div>
+				<div class="form-group">
+					<h:outputText value="Mínimo"></h:outputText>
+					<p:inputText class="form-control" id="minimo"
+						value="#{beanTemporada.minimo}" />
+				</div>
+
+				<div class="form-group">
+					<h:commandButton id="guardar" action="#{beanTemporada.submit}"
+						value="guardar" label="Guardar"></h:commandButton>
+				</div>
+			</div>
+			
+			<div class="col-lg-6">
+				<h:dataTable value="#{beanTemporada.usuarios}" var="usuarios">
+					<h:colum>
+						<h:selectBooleanCheckbox value="#{beanTemporada.checked[usuario.usuario]}"></h:selectBooleanCheckbox>
+					</h:colum>
+				</h:dataTable>
+			</div>
 		</div>
-		<div class="form-group">
-			<h:outputText value="Lugar"></h:outputText>
-			<p:inputText class="form-control" id="lugar" value="#{beanTemporada.lugar}"/>
-		</div>
-		<div class="form-group">
-			<h:outputText value="Mínimo"></h:outputText>
-			<p:inputText class="form-control" id="minimo" value="#{beanTemporada.minimo}"/>
-		</div>
-		
+
 	</ui:define>
 </ui:composition>
 </html>

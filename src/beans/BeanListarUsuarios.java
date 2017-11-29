@@ -1,5 +1,12 @@
 package beans;
 
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import modelo.Usuario;
+
 import controlador.Controlador;
 
 @ManagedBean(name = "beanListarUsuarios")
