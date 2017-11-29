@@ -11,4 +11,6 @@ public interface UsuarioDAO {
 	public Usuario findUsuarioByUsuario(String usuario) throws DAOException;
 	
 	public Usuario updateUsuario(String usuario, String clave, String mail, String movil) throws DAOException;
+	
+	public List<Usuario> findAllUsuarios() throws DAOException;
 }

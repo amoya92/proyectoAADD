@@ -3,6 +3,8 @@ package controlador;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.persistence.internal.databaseaccess.DatasourcePlatform;
+
 import dao.AlineacionDAO;
 import dao.DAOException;
 import dao.DAOFactoria;
@@ -69,6 +71,13 @@ public class Controlador {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public List<Usuario> listarUsuarios(){
+		UsuarioDAO usuDAO = DAOFactoria.getUnicaInstancia().getUsuarioDAO();
+		try{
+			return usuDAO.findAllUsuarios();
+		}catch(DAOException e);
 	}
 	
 	public Temporada registroTemporada(String nombre, String lugar, int minimo){

@@ -78,6 +78,16 @@ public class JPAUsuarioDAO implements UsuarioDAO {
 		return usu;
 	}
 	
-	
+	@Override
+	public List<Usuario> findAllUsuarios() throws DAOException{
+		EntityManager em = null;
+		
+		synchronized (emf) {
+			em = emf.createEntityManager();
+		}
+		
+		Query usuQuery = em.createQuery("SELECT u FROM Ususario u");
+		return (List<Usuario>) usuQuery.getResultList();
+	}
 
 }
