@@ -31,13 +31,14 @@ public class ServletRegistro extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("static-access")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String usuario = request.getParameter("usuario");
 		String telefono = request.getParameter("telefono");
 		String mail = request.getParameter("email");
-		String contrasena = request.getParameter("password1");
-		String contrasena2 = request.getParameter("password2");
+		String contrasena = request.getParameter("clave");
+		String contrasena2 = request.getParameter("clave2");
 		
 		if(!contrasena.equals(contrasena2)) response.sendError(response.SC_UNAUTHORIZED, "Contraseñas diferentes.");
 		

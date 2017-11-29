@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import modelo.Partido;
-import modelo.Temporada;
-import modelo.Usuario;
 
 public interface PartidoDAO {
 

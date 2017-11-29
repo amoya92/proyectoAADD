@@ -25,11 +25,11 @@
 				</tr>
 				<tr>
 					<td><label>Contraseña:</label></td>
-					<td><input type="password" name="password1" /></td>
+					<td><input type="password" name="clave" /></td>
 				</tr>
 				<tr>
 					<td><label>Repite contraseña:</label></td>
-					<td><input type="password" name="password2" /></td>
+					<td><input type="password" name="clave2" /></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Registrar" /></td>

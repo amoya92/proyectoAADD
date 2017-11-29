@@ -31,7 +31,7 @@ public class Controlador {
 	
 	public static Controlador getUnicaInstancia(){
 		if(unicaInstancia == null){
-			new Controlador();
+			unicaInstancia = new Controlador();
 		}
 		return unicaInstancia;
 	}

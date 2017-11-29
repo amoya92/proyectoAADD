@@ -9,7 +9,7 @@ import modelo.Usuario;
 
 import controlador.Controlador;
 
-@ManagedBean(name = "beanListarUsuarios")
+@ManagedBean(name="beanListarUsuarios")
 @SessionScoped
 public class BeanListarUsuarios {
 	private Collection<Usuario> usuarios;

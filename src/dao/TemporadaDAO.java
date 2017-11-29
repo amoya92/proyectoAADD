@@ -1,9 +1,6 @@
 package dao;
 
-import java.util.List;
-
 import modelo.Temporada;
-import modelo.Usuario;
 
 public interface TemporadaDAO {
 	

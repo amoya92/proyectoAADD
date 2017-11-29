@@ -19,6 +19,7 @@ public class Partido implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@OneToMany(mappedBy="partido")
@@ -78,9 +79,4 @@ public class Partido implements Serializable {
 	public void setTemporada(Temporada temporada) {
 		this.temporada = temporada;
 	}
-
-	
-	
-	
-	
 }

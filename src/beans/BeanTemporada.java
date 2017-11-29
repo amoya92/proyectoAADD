@@ -16,7 +16,7 @@ import controlador.Controlador;
 import modelo.Temporada;
 import modelo.Usuario;
 
-@ManagedBean(name = "beanTemporada")
+@ManagedBean(name="beanTemporada")
 @SessionScoped
 public class BeanTemporada {
 

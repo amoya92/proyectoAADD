@@ -13,7 +13,8 @@ public class JDBCDAOFactoria extends DAOFactoria {
 		this.ds = null;
 		try {
 			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/aadd");
+			ds = (DataSource) ctx.lookup("java:/comp/env/" + "jdbc/aadd");
+			//ds = (DataSource) ctx.lookup("jdbc/aadd");
 
 		} catch (NamingException e) {
 			e.printStackTrace();

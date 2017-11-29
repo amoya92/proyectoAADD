@@ -8,7 +8,7 @@ public class JPADAOFactoria extends DAOFactoria{
 	private EntityManagerFactory emf;
 	
 	public JPADAOFactoria(){
-		emf = Persistence.createEntityManagerFactory("Practica1");
+		emf = Persistence.createEntityManagerFactory("PracticaFinal");
 	}
 
 	@Override
