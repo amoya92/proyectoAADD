@@ -1,16 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
 <head>
-  <title><ui:insert name="title">Default title</ui:insert></title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
-  integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<title><ui:insert name="title">Default title</ui:insert></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"></link>
 </head>
 
 <h:body>
-	<ui:insert name="body">Body</ui:insert>
+	<ui:insert name="nav">
+		<ui:include src="nav.xhtml" />
+	</ui:insert>
+
+	<div class="container-fluid px-0">
+		<div class="content-header">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 align-middle">
+						<h3>
+							<ui:insert name="titulo">Titulo</ui:insert>
+						</h3>
+					</div>
+					<div class="col-6 text-right aligh-middle"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<ui:insert name="contenido">Contenido</ui:insert>
+			</div>
+		</div>
+	</div>
 </h:body>
 
 </html>

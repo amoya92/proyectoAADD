@@ -53,7 +53,7 @@ public class BeanCrearPartido {
 
 	public String submit() {
 		Controlador.getUnicaInstancia().registrarPartido(fecha, temporadaId);
-		return "partidoLista";
+		return "partidolista";
 	}
 
 }
