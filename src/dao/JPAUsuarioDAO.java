@@ -89,8 +89,8 @@ public class JPAUsuarioDAO implements UsuarioDAO {
 			em = emf.createEntityManager();
 		}
 		
-		Query usuQuery = em.createQuery("SELECT u FROM Ususario u");
-		return (List<Usuario>) usuQuery.getResultList();
+		Query query = em.createNamedQuery("findAllUsuarios");
+		return query.getResultList();
 	}
 
 }

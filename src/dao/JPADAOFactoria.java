@@ -22,4 +22,10 @@ public class JPADAOFactoria extends DAOFactoria{
 	public PartidoDAO getPartidoDAO() {
 		return new JPAPartidoDAO(this.emf);
 	}
+	
+	@Override
+	public TemporadaDAO getTemporadaDAO() {
+		return new JPATemporadaDAO(this.emf);
+	}
+	
 }

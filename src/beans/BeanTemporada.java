@@ -23,12 +23,11 @@ public class BeanTemporada {
 	private String nombre;
 	private String lugar;
 	private int minimo;
-	private List<Usuario> usuarios;
-	private Map<String, Boolean> checked;
+	private Collection<Usuario> usuarios;
+	private String[] checked;
 
 	public BeanTemporada() {
 		this.usuarios = new LinkedList<Usuario>();
-		this.checked = new HashMap<String, Boolean>();
 	}
 
 	public String getNombre() {
@@ -55,8 +54,15 @@ public class BeanTemporada {
 		this.minimo = minimo;
 	}
 
-	public List<Usuario> getUsuarios() {
-		return Controlador.getUnicaInstancia().listarUsuarios();
+	public Collection<Usuario> getUsuarios() {
+		this.usuarios = new LinkedList<Usuario>();
+		this.usuarios.addAll(Controlador.getUnicaInstancia().listarUsuarios());
+		return this.usuarios;
+		/*List<Usuario> todosUsuarios = Controlador.getUnicaInstancia().listarUsuarios();
+		for (Usuario usuario : todosUsuarios) {
+			usuarios.add(usuario);
+		}
+		return usuarios;*/
 	}
 
 	public void setUsuarios(List<Usuario> usuarios) {
@@ -64,26 +70,28 @@ public class BeanTemporada {
 	}
 
 	public String submit() {
-		if (Controlador.getUnicaInstancia().obtenerTemporada(nombre) == null){
+		if (Controlador.getUnicaInstancia().obtenerTemporada(nombre) != null){
 			FacesContext.getCurrentInstance().addMessage("nombre", new FacesMessage("Nombre ya utilizado."));
-			return "faceletError";
+			return "temporadaFallo";
 		}
 		else {
-			Temporada temporada = Controlador.getUnicaInstancia().registroTemporada(nombre, lugar, minimo);
+			Controlador.getUnicaInstancia().registroTemporada(nombre, lugar, minimo);
 			for (Usuario usuario : usuarios) {
-				if (checked.get(usuario.getUsuario()))
-					Controlador.getUnicaInstancia().anadirUsuarioTemporada(nombre, usuario.getUsuario());
+				for(int i = 0; i<this.checked.length; i++){
+					if (checked[i] == usuario.getUsuario())
+						Controlador.getUnicaInstancia().anadirUsuarioTemporada(nombre, usuario.getUsuario());
+				}
+				
 			}
-			checked.clear();
 			return "temporadaLista";
 		}
 	}
 
-	public Map<String, Boolean> getChecked() {
+	public String[] getChecked() {
 		return checked;
 	}
 
-	public void setChecked(Map<String, Boolean> checked) {
+	public void setChecked(String[] checked) {
 		this.checked = checked;
 	}
 	

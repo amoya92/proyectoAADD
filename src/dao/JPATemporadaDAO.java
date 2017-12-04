@@ -1,8 +1,11 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import modelo.Temporada;
 import modelo.Usuario;
@@ -108,4 +111,14 @@ public class JPATemporadaDAO implements TemporadaDAO {
 		return temp;
 	}
 
+	public List<Temporada> findAllTemporadas(){
+		EntityManager em = null;
+
+		synchronized (emf) {
+			em = emf.createEntityManager();
+		}
+		
+		Query query = em.createNamedQuery("findAllTemporadas");
+		return query.getResultList();
+	}
 }

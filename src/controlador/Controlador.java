@@ -93,6 +93,16 @@ public class Controlador {
 		return null;
 	}
 	
+	public List<Temporada> listarTemporadas(){
+		TemporadaDAO tempDAO = DAOFactoria.getUnicaInstancia().getTemporadaDAO();
+		try{
+			return tempDAO.findAllTemporadas();
+		} catch (DAOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public Temporada anadirUsuarioTemporada(String temporada, String usuario){
 		TemporadaDAO tempDAO = DAOFactoria.getUnicaInstancia().getTemporadaDAO();
 		try {

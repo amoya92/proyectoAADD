@@ -7,6 +7,13 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries(
+		{
+		@NamedQuery(	
+			name="findAllTemporadas",
+				query="SELECT t FROM Temporada t"),
+		}
+)
 public class Temporada implements Serializable {
 
 	

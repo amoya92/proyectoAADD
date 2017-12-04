@@ -2,7 +2,6 @@ package dao;
 
 import modelo.Alineacion;
 import modelo.Color;
-import modelo.Usuario;
 
 public interface AlineacionDAO {
 

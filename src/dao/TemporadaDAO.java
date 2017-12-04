@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import modelo.Temporada;
 
 public interface TemporadaDAO {
@@ -11,5 +12,7 @@ public interface TemporadaDAO {
 	public Temporada addUsuarioTemporada(String temporada, String usuario) throws DAOException;
 
 	public Temporada deleteUsuarioTemporada(String temporada, String usuario) throws DAOException;
+
+	public List<Temporada> findAllTemporadas() throws DAOException;
 
 }
