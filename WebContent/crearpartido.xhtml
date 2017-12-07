@@ -7,29 +7,33 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/WEB-INF/templates/gestor.xhtml">
-	<ui:define name="titulo">Crear temporada</ui:define>
+<ui:composition template="/WEB-INF/templates/base.xhtml">
+	<ui:define name="titulo">Crear partido</ui:define>
 	<ui:define name="contenido">
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="form-group">
-					<h:outputText value="Fecha"></h:outputText>
-					<p:calendar id="datetime" value="#{beanCrearPartido.fecha}" pattern="dd/MM/yyyy HH:mm"/>
-				</div>
-				<div class="form-group">
-					<h:outputText value="Temporada"></h:outputText>
-					<p:selectOneMenu id="temporada" value="#{beanCrearPartido.temporadaId}">
-						<f:selectItems value="#{beanCrearPartido.temporadas}" var="temp" itemValue="#{temp.nombre}" itemLabel="#{temp.nombre}" />
-					</p:selectOneMenu>
-				</div>
+		<h:form>
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<h:outputText value="Fecha"></h:outputText>
+						<p:calendar id="datetime" value="#{beanCrearPartido.fecha}"
+							pattern="dd/MM/yyyy HH:mm" />
+					</div>
+					<div class="form-group">
+						<h:outputText value="Temporada"></h:outputText>
+						<p:selectOneMenu id="temporada" value="#{beanCrearPartido.temporadaId}">
+							<f:selectItem itemLabel="Selecciona" itemValue="" />
+							<f:selectItems value="#{beanCrearPartido.temporadas}" var="temp"
+							itemLabel="#{temp.nombre}" itemValue="#{temp.nombre}" />
+						</p:selectOneMenu>
+					</div>
 
-				<div class="form-group">
-					<h:commandButton id="guardar" action="#{beanCrearPartido.submit}"
-						value="Guardar" label="Guardar"></h:commandButton>
+					<div class="form-group">
+						<h:commandButton id="guardar" action="#{beanCrearPartido.submit}"
+							value="Guardar" label="Guardar"></h:commandButton>
+					</div>
 				</div>
 			</div>
-		</div>
-
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

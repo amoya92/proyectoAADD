@@ -19,6 +19,8 @@ import modelo.Usuario;
 
 public class Controlador {
 	private static Controlador unicaInstancia;
+	
+	private Usuario usuarioActual;
 
 
 	private Controlador(){

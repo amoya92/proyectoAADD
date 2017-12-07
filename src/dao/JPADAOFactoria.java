@@ -16,7 +16,6 @@ public class JPADAOFactoria extends DAOFactoria{
 		
 		return new JPAUsuarioDAO(this.emf);
 	}
-
 	
 	@Override
 	public PartidoDAO getPartidoDAO() {

@@ -1,11 +1,8 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -13,12 +10,11 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import controlador.Controlador;
-import modelo.Temporada;
 import modelo.Usuario;
 
 @ManagedBean(name="beanTemporada")
 @SessionScoped
-public class BeanTemporada {
+public class BeanCrearTemporada {
 
 	private String nombre;
 	private String lugar;
@@ -26,7 +22,7 @@ public class BeanTemporada {
 	private Collection<Usuario> usuarios;
 	private String[] checked;
 
-	public BeanTemporada() {
+	public BeanCrearTemporada() {
 		this.usuarios = new LinkedList<Usuario>();
 	}
 
@@ -72,7 +68,7 @@ public class BeanTemporada {
 	public String submit() {
 		if (Controlador.getUnicaInstancia().obtenerTemporada(nombre) != null){
 			FacesContext.getCurrentInstance().addMessage("nombre", new FacesMessage("Nombre ya utilizado."));
-			return "temporadaFallo";
+			return "temporadafallo";
 		}
 		else {
 			Controlador.getUnicaInstancia().registroTemporada(nombre, lugar, minimo);
@@ -83,7 +79,7 @@ public class BeanTemporada {
 				}
 				
 			}
-			return "temporadaLista";
+			return "temporadalista";
 		}
 	}
 

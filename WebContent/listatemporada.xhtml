@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/base.xhtml">
+	<ui:define name="titulo">Lista temporadas</ui:define>
+	<ui:define name="contenido">
+		<h:form>
+			<p:dataTable var="temporada"
+				value="#{BeanListarTemporadas.temporadas}">
+				<p:column headerText="Nombre">
+					<h:outputText value="#{temporada.nombre}" />
+				</p:column>
+
+				<p:column headerText="Lugar">
+					<h:outputText value="#{temporada.lugar}" />
+				</p:column>
+
+				<p:column headerText="Minimo">
+					<h:outputText value="#{temporada.minimo}" />
+				</p:column>
+				<p:column>
+					<h:commandLink actionListener="#{BeanListarTemporadas.editTemporada(temporada)}" ajax="false">
+						<f:param name="id" value="#{temporada.nombre}" />
+					</h:commandLink>
+					<p:commandButton icon="ui-icon-trash" title="Editar"
+						actionListener="#{BeanListarTemporadas.editTemporada(temporada)}"
+						ajax="false" />
+					<p:commandButton icon="ui-icon-trash" title="Ver"
+						actionListener="#{BeanListarTemporadas.viewTemporada(temporada)}"
+						ajax="false" />
+					<p:commandButton icon="ui-icon-trash" title="Eliminar"
+						actionListener="#{BeanListarTemporadas.removeTemporada(temporada)}"
+						ajax="false" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
