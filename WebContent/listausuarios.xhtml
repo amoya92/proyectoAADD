@@ -7,30 +7,25 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<<<<<<< HEAD
 <ui:composition template="/WEB-INF/templates/gestor.xhtml">
 	<ui:define name="titulo">Listar usuarios</ui:define>
-=======
-<ui:composition template="/WEB-INF/templates/base.xhtml">
-	<ui:define name="titulo">Crear temporada</ui:define>
->>>>>>> branch 'master' of https://github.com/amoya92/proyectoAADD.git
 	<ui:define name="contenido">
+		<h:form>
+			<p:dataTable var="usuario" value="#{beanListarUsuarios.usuarios}">
+				<p:column headerText="Id">
+					<h:outputText value="#{usuario.usuario}" />
+				</p:column>
 
-		<p:dataTable var="usuario" value="#{beanListarUsuarios.usuarios}">
-			<p:column headerText="Id">
-				<h:outputText value="#{usuario.usuario}" />
-			</p:column>
+				<p:column headerText="Year">
+					<h:outputText value="#{usuario.mail}" />
+				</p:column>
 
-			<p:column headerText="Year">
-				<h:outputText value="#{usuario.mail}" />
-			</p:column>
+				<p:column headerText="Brand">
+					<h:outputText value="#{usuario.movil}" />
+				</p:column>
 
-			<p:column headerText="Brand">
-				<h:outputText value="#{usuario.movil}" />
-			</p:column>
-
-		</p:dataTable>
-
+			</p:dataTable>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>
