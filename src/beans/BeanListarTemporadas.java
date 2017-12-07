@@ -11,7 +11,7 @@ import com.sun.xml.bind.v2.schemagen.xmlschema.List;
 import controlador.Controlador;
 import modelo.Temporada;
 
-@ManagedBean(name="BeanListarTemporadas")
+@ManagedBean(name = "BeanListarTemporadas")
 @SessionScoped
 public class BeanListarTemporadas {
 
@@ -26,6 +26,19 @@ public class BeanListarTemporadas {
 	public void setTemporadas(Collection<Temporada> temporadas) {
 		this.temporadas = temporadas;
 	}
-	
-	
+
+	public void removeTemporada(Temporada temporada) {
+		// Controlador.getUnicaInstancia().eliminarTemporada(temporada.getNombre());
+	}
+
+	public String viewTemporada(Temporada temporada) {
+
+		return "vertemporada";
+	}
+
+	public String editTemporada(Temporada temporada) {
+
+		return "editartemporada";
+	}
+
 }

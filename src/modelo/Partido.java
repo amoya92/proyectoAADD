@@ -19,7 +19,7 @@ public class Partido implements Serializable {
 	@GeneratedValue
 	private Long id;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 	
 	@OneToMany(mappedBy="partido")

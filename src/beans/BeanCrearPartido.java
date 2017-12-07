@@ -5,6 +5,7 @@ import javax.faces.bean.SessionScoped;
 
 import java.util.Date;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import modelo.Temporada;
@@ -43,11 +44,9 @@ public class BeanCrearPartido {
 	}
 
 	public Collection<Temporada> getTemporadas() {
-		List<Temporada> todasTemporadas = Controlador.getUnicaInstancia()
-				.listarTemporadas();
-		for (Temporada temporada : todasTemporadas) {
-			this.temporadas.add(temporada);
-		}
+		this.temporadas = new LinkedList<Temporada>();
+		this.temporadas.addAll(Controlador.getUnicaInstancia()
+				.listarTemporadas());
 		return this.temporadas;
 	}
 
