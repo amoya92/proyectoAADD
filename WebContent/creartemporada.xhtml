@@ -15,19 +15,24 @@
 				<div class="col-lg-6">
 					<div class="form-group">
 						<h:outputText value="Nombre"></h:outputText>
-						<p:inputText class="form-control" id="nombre"
-							value="#{beanTemporada.nombre}" />
+						<p:inputText class="form-control" id="nombre" value="#{beanTemporada.nombre}">
+							<f:validator validatorId="campoVacio" />
+						</p:inputText>
 						<h:message for="nombre" style="color:red" />
 					</div>
 					<div class="form-group">
 						<h:outputText value="Lugar"></h:outputText>
-						<p:inputText class="form-control" id="lugar"
-							value="#{beanTemporada.lugar}" />
+						<p:inputText class="form-control" id="lugar" value="#{beanTemporada.lugar}">
+							<f:validator validatorId="campoVacio" />
+						</p:inputText>
+						<h:message for="lugar" style="color:red" />
 					</div>
 					<div class="form-group">
 						<h:outputText value="Mínimo"></h:outputText>
-						<p:inputText class="form-control" id="minimo"
-							value="#{beanTemporada.minimo}" />
+						<p:inputText class="form-control" id="minimo" value="#{beanTemporada.minimo}">
+							<f:validator validatorId="campoVacio" />
+						</p:inputText>
+						<h:message for="minimo" style="color:red" />
 					</div>
 
 					<div class="form-group">
